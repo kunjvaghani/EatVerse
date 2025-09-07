@@ -112,6 +112,7 @@ const FoodPartnerRegisterPage = () => {
       {/* Right Form Panel */}
       <div className="flex flex-col justify-center items-center p-8 sm:p-12 bg-white">
         <div className="w-full max-w-md">
+          <Link to="/" className="text-red-600 font-medium mb-4 inline-block">Go back to home</Link>
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
             Register Your Restaurant
           </h2>
@@ -143,7 +144,7 @@ const FoodPartnerRegisterPage = () => {
                 type="text"
                 required
                 placeholder="The Good Food Place"
-                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900"
               />
             </div>
 
@@ -160,7 +161,7 @@ const FoodPartnerRegisterPage = () => {
                 type="text"
                 required
                 placeholder="John Doe"
-                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900"
               />
             </div>
 
@@ -177,7 +178,7 @@ const FoodPartnerRegisterPage = () => {
                 type="tel"
                 required
                 placeholder="+91 9876543210"
-                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900"
               />
             </div>
 
@@ -194,7 +195,7 @@ const FoodPartnerRegisterPage = () => {
                 type="email"
                 required
                 placeholder="business@restaurant.com"
-                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900"
               />
             </div>
 
@@ -211,7 +212,7 @@ const FoodPartnerRegisterPage = () => {
                 type="text"
                 required
                 placeholder="Surat , Gujarat"
-                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900"
               />
             </div>
 
@@ -229,7 +230,7 @@ const FoodPartnerRegisterPage = () => {
                 type="password"
                 required
                 placeholder="Create a strong password"
-                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900"
               />
             </div>
 

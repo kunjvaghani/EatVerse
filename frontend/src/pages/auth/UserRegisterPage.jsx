@@ -159,6 +159,7 @@ const UserRegisterPage = () => {
       {/* Right Form Panel */}
       <div className="flex flex-col justify-center items-center p-8 sm:p-12 bg-gray-50">
         <div className="w-full max-w-md">
+          <Link to="/" className="text-red-600 font-medium mb-4 inline-block">Go back to home</Link>
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
             Create an Account
           </h2>
@@ -191,7 +192,7 @@ const UserRegisterPage = () => {
                 type="text"
                 required
                 placeholder="John Doe"
-                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900"
               />
             </div>
 
@@ -208,7 +209,7 @@ const UserRegisterPage = () => {
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900"
               />
             </div>
 
@@ -225,7 +226,7 @@ const UserRegisterPage = () => {
                 type="password"
                 required
                 placeholder="Create a strong password"
-                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900"
               />
             </div>
 

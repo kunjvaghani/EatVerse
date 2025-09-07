@@ -48,18 +48,21 @@ const FoodPartnerLoginPage = () => {
       {/* Right Form Panel */}
       <div className="flex flex-col justify-center items-center p-8 sm:p-12 bg-white">
         <div className="w-full max-w-md">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Partner Sign In</h2>
-          <p className="text-gray-600 mb-8">Access your restaurant dashboard.</p>
+              <Link to="/" className="text-red-600 font-medium mb-4 inline-block">Go back to home</Link>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Partner Sign In</h2>
+              <p className="text-gray-600 mb-8">Access your restaurant dashboard.</p>
 
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">Business Email</label>
-              <input id="email" name="email" type="email" required placeholder="business@restaurant.com" className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" />
+              {/* <input id="email" name="email" type="email" required placeholder="business@restaurant.com" className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" /> */}
+              <input id="email" name="email" type="email" required placeholder="business@restaurant.com" className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900" />
             </div>
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-              <input id="password" name="password" type="password" required placeholder="••••••••" className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" />
+              {/* <input id="password" name="password" type="password" required placeholder="••••••••" className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" /> */}
+              <input id="password" name="password" type="password" required placeholder="••••••••" className="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900" />
             </div>
 
             <div>
