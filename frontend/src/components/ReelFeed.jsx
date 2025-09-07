@@ -50,7 +50,6 @@ const ReelFeed = ({ items = [], onLike, onSave, emptyMessage = 'No videos yet.' 
               ref={setVideoRef(item._id)}
               className="reel-video"
               src={item.video}
-              muted
               playsInline
               loop
               preload="metadata"

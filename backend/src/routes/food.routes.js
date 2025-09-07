@@ -14,6 +14,10 @@ const upload = multer({
 router.post('/' , authMiddleware.authfoodpartnermiddleware, upload.single("video") ,  foodcontroller.createFood);
 
 
+// Public endpoint (no auth) used by frontend to show reels to unauthenticated users
+router.get('/public', foodcontroller.getallfooditem);
+
+// Authenticated endpoint (keeps previous behavior for user-specific features)
 router.get('/' , authMiddleware.authusermiddleware ,  foodcontroller.getallfooditem);
 
 router.post('/like' , authMiddleware.authusermiddleware, foodcontroller.likeFood)

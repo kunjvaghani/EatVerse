@@ -90,7 +90,7 @@ const Home = () => {
     // Autoplay behavior is handled inside ReelFeed
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/food", { withCredentials: true })
+        axios.get("http://localhost:3000/api/food/public")
             .then(response => {
 
                 console.log(response.data);
