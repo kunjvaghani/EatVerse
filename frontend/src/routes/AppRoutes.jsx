@@ -11,6 +11,8 @@ import Saved from '../pages/auth/Saved';
 import BottomNav from '../components/BottomNav';
 import CreateFood from '../pages/food-partner/CreateFood';
 import Profile from '../pages/food-partner/Profile';
+// import ReelFeed from '../components/ReelFeed';
+
 
 const AppRoutes = () => {
     return (
@@ -23,7 +25,8 @@ const AppRoutes = () => {
                 <Route path="/" element={<> <HomePage/><BottomNav /> </>}>  </Route>
                 <Route path="/saved" element={<><Saved /><BottomNav /></>} />
                 <Route path="/create-food" element={<CreateFood />} />
-                <Route path="/food-partner/:id" element={<Profile />} />    
+                <Route path="/food-partner/:id" element={<Profile />} />
+                {/* <Route path="/feed" element={<ReelFeed/>} /> */}
 
             </Routes>
             {/* <Footer/> */}

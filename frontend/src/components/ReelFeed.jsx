@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 // Reusable feed for vertical reels
 // Props:
-// - items: Array of video items { _id, video, description, likeCount, savesCount, commentsCount, comments, foodPartner }
+// - items: Array of video items { _id, video, description, likeCount, savesCount, commentsCount, comments, foodpartner }
 // - onLike: (item) => void | Promise<void>
 // - onSave: (item) => void | Promise<void>
 // - emptyMessage: string
@@ -34,7 +34,7 @@ const ReelFeed = ({ items = [], onLike, onSave, emptyMessage = 'No videos yet.' 
     if (!el) { videoRefs.current.delete(id); return }
     videoRefs.current.set(id, el)
   }
-
+  // console.log("Reel item:", item);
   return (
     <div className="reels-page">
       <div className="reels-feed" role="list">
@@ -95,10 +95,27 @@ const ReelFeed = ({ items = [], onLike, onSave, emptyMessage = 'No videos yet.' 
               </div>
 
               <div className="reel-content">
-                <p className="reel-description" title={item.description}>{item.description}</p>
-                {item.foodPartner && (
-                  <Link className="reel-btn" to={"/food-partner/" + item.foodPartner} aria-label="Visit store">Visit store</Link>
-                )}
+                {/* <p className="reel-description" title={item.description}>{item.description}</p> */}
+                <p className="reel-description" title={item.description}>
+                  {item.description || "No description available"}
+                </p>
+
+                {item.foodpartner && (() => {
+                  // support foodpartner being an id string or an object { _id|id }
+                  const partnerId = typeof item.foodpartner === 'string'
+                    ? item.foodpartner
+                    : item.foodpartner?._id ?? item.foodpartner?.id ?? null
+
+                  if (!partnerId) return null
+                  return (
+                    <Link
+                      className="reel-btn reel-btn--blue"
+                      to={`/food-partner/${partnerId}`} aria-label="Visit store"
+                    >
+                      Visit store
+                    </Link>
+                  )
+                })()}
               </div>
             </div>
           </section>

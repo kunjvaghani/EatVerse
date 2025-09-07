@@ -15,9 +15,12 @@ router.post('/' , authMiddleware.authfoodpartnermiddleware, upload.single("video
 
 
 // Public endpoint (no auth) used by frontend to show reels to unauthenticated users
+//  Unauthenticate see all food
 router.get('/public', foodcontroller.getallfooditem);
 
 // Authenticated endpoint (keeps previous behavior for user-specific features)
+
+// authenticate see all food
 router.get('/' , authMiddleware.authusermiddleware ,  foodcontroller.getallfooditem);
 
 router.post('/like' , authMiddleware.authusermiddleware, foodcontroller.likeFood)

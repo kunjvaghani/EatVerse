@@ -35,6 +35,7 @@
   object-fit: cover; /* cover entire screen */
   object-position: center;
   background: #000;
+  z-index: 0;
 }
 
 /* Overlay: content sits on top of video */
@@ -44,6 +45,7 @@
   display: flex;
   align-items: flex-end; /* content near bottom */
   pointer-events: none; /* allow click-through except controls */
+  z-index: 2; /* ensure overlay appears above the video element */
 }
 
 /* Subtle top-to-bottom gradient so text is readable on any video */
@@ -56,6 +58,7 @@
     rgba(0,0,0,0.35) 65%,
     rgba(0,0,0,0.65) 100%
   );
+  z-index: 1;
 }
 
 .reel-content {
@@ -68,6 +71,7 @@
   padding-right: 4.5rem;
   gap: var(--space-4);
   pointer-events: auto; /* enable button click */
+  z-index: 3; /* content should be above gradient */
 }
 
 /* Truncated to two lines */
@@ -100,6 +104,11 @@
 .reel-btn:hover { background: var(--color-accent-hover); }
 .reel-btn:active { transform: translateY(1px); }
 .reel-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* explicit blue variant in case theme accent is changed; uses same tokens */
+.reel-btn--blue { background: var(--color-accent); color: #fff; }
+.reel-btn--blue:hover { background: var(--color-accent-hover); }
+.reel-btn--blue:focus-visible { outline: 3px solid rgba(255,255,255,0.12); }
 
 /* Desktop tweaks */
 @media (min-width: 768px) {
