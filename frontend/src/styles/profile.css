@@ -132,6 +132,37 @@
   border-radius: var(--radius-sm);
 }
 
+/* Button styles for follow action */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 120ms ease, color 120ms ease, transform 80ms ease;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn--primary {
+  background: var(--color-accent, #ef4444);
+  color: white;
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.btn--primary:hover { filter: brightness(0.98); }
+
+.btn--muted {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+.btn--muted:hover { background: var(--color-surface-alt); }
+
 /* Responsive tweaks */
 @media (max-width: 900px) {
   .profile-meta { grid-template-columns: 96px 1fr; }

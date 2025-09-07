@@ -38,7 +38,7 @@ async function registerUser(req, res) {
     }, process.env.JWT_SECRET)
 
     res.cookie("token", token)
-    console.log(user)
+    // console.log(user)
     res.status(201).json({
         message: "User registered successfully",
         user: {
@@ -181,6 +181,24 @@ async function getallfoodpartner(req , res) {
     }
 }
 
+async function getfoodpartnerfollowing(req , res) {
+    const foodpartnerdata = req.user;
+    try {
+        const followingids = foodpartnerdata.followingFoodPartners || [];
+        const followingpartners = await foodPartnerModel.find({ _id: { $in: followingids } });
+        res.status(200).json({
+            message: "Food partners retrieved successfully",
+            followingpartners
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "Something went wrong",
+            error: error.message
+        })
+    }
+
+
+}
 module.exports = {
     registerUser,
     loginUser,
@@ -188,5 +206,6 @@ module.exports = {
     foodPartnerLogin , 
     foodPartnerLogout , 
     foodPartnerRegister , 
-    getallfoodpartner
+    getallfoodpartner , 
+    getfoodpartnerfollowing
 };

@@ -8,14 +8,26 @@ const Profile = () => {
     const { id } = useParams()
     const [profile, setProfile] = useState(null)
     const [videos, setVideos] = useState([])
+    const [isFollowing, setIsFollowing] = useState(false)
 
     useEffect(() => {
         axios.get(`http://localhost:3000/api/food-partner/${id}`, { withCredentials: true })
             .then(response => {
                 setProfile(response.data.foodPartner)
                 setVideos(response.data.foodPartner.foodItems)
+                setIsFollowing(!!response.data.foodPartner.isFollowing)
             })
     }, [id])
+
+    const toggleFollow = async () => {
+        try {
+            const res = await axios.post(`http://localhost:3000/api/food-partner/${id}/follow`, {}, { withCredentials: true })
+            setIsFollowing(!!res.data.isFollowing)
+        } catch (err) {
+            console.error('Follow error', err)
+            // could show toast
+        }
+    }
 
 
     return (
@@ -49,6 +61,14 @@ const Profile = () => {
                             <span className="profile-label">Email:</span>
                             <span className="profile-value">{profile?.email}</span>
                         </div>
+                        <div style={{ marginTop: 12 }}>
+                            <button
+                                onClick={toggleFollow}
+                                className={`btn ${isFollowing ? 'btn--muted' : 'btn--primary'}`}
+                            >
+                                {isFollowing ? 'Following' : 'Follow'}
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -60,7 +80,8 @@ const Profile = () => {
                     </div>
                     <div className="profile-stat" role="listitem">
                         <span className="profile-stat-label">customer served</span>
-                        <span className="profile-stat-value">{profile?.customersServed || 100}</span>
+                        {/* <span className="profile-stat-value">{profile?.customersServed || 100}</span> */}
+                        <span className="profile-stat-value">{isFollowing.length || 100}</span>
                     </div>
                 </div>
             </section>

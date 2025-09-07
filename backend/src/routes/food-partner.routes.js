@@ -11,4 +11,10 @@ router.get("/:id",
     foodPartnerController.getFoodPartnerById
 )
 
+// Toggle follow/unfollow for a food partner
+router.post('/:id/follow',
+    authMiddleware.authusermiddleware,
+    foodPartnerController.toggleFollowFoodPartner
+)
+
 module.exports = router;

@@ -15,6 +15,12 @@ const userSchema = new mongoose.Schema({
         type : String ,
         required : true,
     }
+    ,
+    followingFoodPartners: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'food-partner',
+        default: []
+    }]
 } , {
     timestamps : true
 })
