@@ -107,6 +107,30 @@
   color: var(--color-text-secondary);
   font-size: 1.5rem;
 }
+.profile-info {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.profile-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.profile-label {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  min-width: 130px; /* keeps labels aligned */
+}
+
+.profile-value {
+  font-weight: 500;
+  color: var(--color-text);
+  background: var(--color-surface-alt);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
 
 /* Responsive tweaks */
 @media (max-width: 900px) {
