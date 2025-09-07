@@ -81,7 +81,7 @@
 
 // export default HomePage
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../../styles/reels.css'
 import ReelFeed from '../../components/ReelFeed'
@@ -89,6 +89,7 @@ import ReelFeed from '../../components/ReelFeed'
 const Home = () => {
     const [videos, setVideos] = useState([])
     const [showVideos, setShowVideos] = useState(false)
+    const navigate = useNavigate()
 
     // fetch available videos (public endpoint)
     useEffect(() => {
@@ -179,7 +180,7 @@ const Home = () => {
                 {/* CTA to show videos */}
                 <div className="max-w-6xl mx-auto px-6 pb-20 text-center">
                     <button
-                        onClick={() => setShowVideos(true)}
+                        onClick={() => navigate('/feed')}
                         className="mt-6 inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-full font-semibold shadow-md hover:bg-red-700"
                     >
                         See all videos
