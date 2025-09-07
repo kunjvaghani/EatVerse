@@ -21,7 +21,7 @@ const FoodPartnerLoginPage = () => {
       });
       console.log('Login successful:', response.data);
       alert('Login successful!');
-      navigate('/'); 
+      navigate('/create-food'); // ✅ Redirect on success
     } catch (error) {
       console.error('Error during login:', error);
       alert('Login failed. Please check your credentials and try again.');
