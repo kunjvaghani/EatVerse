@@ -6,7 +6,7 @@ async function getFoodPartnerById(req, res) {
     const foodPartnerId = req.params.id;
 
     const foodPartner = await foodPartnerModel.findById(foodPartnerId)
-    const foodItemsByFoodPartner = await foodModel.find({ foodPartner: foodPartnerId })
+    const foodItemsByFoodPartner = await foodModel.find({ foodpartner: foodPartnerId })
 
     if (!foodPartner) {
         return res.status(404).json({ message: "Food partner not found" });
