@@ -11,7 +11,7 @@ const Profile = () => {
     const [isFollowing, setIsFollowing] = useState(false)
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/food-partner/${id}`, { withCredentials: true })
+        axios.get(`${import.meta.env.VITE_API_URL}/food-partner/${id}`, { withCredentials: true })
             .then(response => {
                 setProfile(response.data.foodPartner)
                 setVideos(response.data.foodPartner.foodItems)
@@ -21,7 +21,7 @@ const Profile = () => {
 
     const toggleFollow = async () => {
         try {
-            const res = await axios.post(`http://localhost:3000/api/food-partner/${id}/follow`, {}, { withCredentials: true })
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/food-partner/${id}/follow`, {}, { withCredentials: true })
             setIsFollowing(!!res.data.isFollowing)
         } catch (err) {
             console.error('Follow error', err)

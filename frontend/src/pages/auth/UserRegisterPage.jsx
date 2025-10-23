@@ -109,7 +109,7 @@ const UserRegisterPage = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/user/register',
+        `${import.meta.env.VITE_API_URL}/user/register`,
         userData , {
           withCredentials: true});
 

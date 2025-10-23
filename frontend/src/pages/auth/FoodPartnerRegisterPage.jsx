@@ -19,7 +19,7 @@ const FoodPartnerRegisterPage = () => {
       password: form.password.value,
     };
     try {
-      const response = await axios.post('http://localhost:3000/api/food-partner/register', data);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/food-partner/register`, data);
       if (response.status === 201) {
         alert('Registration successful! Please log in.');
         navigate('/food-partner/login');

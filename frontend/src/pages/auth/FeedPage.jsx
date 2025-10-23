@@ -7,7 +7,7 @@ const FeedPage = () => {
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/food/public')
+    axios.get(`${import.meta.env.VITE_API_URL}/food/public`)
       .then(response => {
         setVideos(response.data.fooditems || [])
       })
@@ -16,7 +16,7 @@ const FeedPage = () => {
 
   async function likeVideo(item) {
     try {
-      const response = await axios.post('http://localhost:3000/api/food/like', { foodId: item._id }, { withCredentials: true })
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/food/like`, { foodId: item._id }, { withCredentials: true })
       if (response.data.like) {
         setVideos((prev) => prev.map((v) => v._id === item._id ? { ...v, likeCount: (v.likeCount || 0) + 1 } : v))
       } else {
@@ -27,7 +27,7 @@ const FeedPage = () => {
 
   async function saveVideo(item) {
     try {
-      const response = await axios.post('http://localhost:3000/api/food/save', { foodId: item._id }, { withCredentials: true })
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/food/save`, { foodId: item._id }, { withCredentials: true })
       if (response.data.save) {
         setVideos((prev) => prev.map((v) => v._id === item._id ? { ...v, savesCount: (v.savesCount || 0) + 1 } : v))
       } else {
