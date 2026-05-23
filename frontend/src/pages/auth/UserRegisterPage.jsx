@@ -90,9 +90,11 @@
 import React, { useState } from 'react';
 import { Link  , useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../../hooks/useAuth';
 
 const UserRegisterPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -115,7 +117,7 @@ const UserRegisterPage = () => {
 
           
       console.log('User registered:', response.data);
-
+      login(response.data.user);
       alert('User registered successfully!');
       navigate('/');
 

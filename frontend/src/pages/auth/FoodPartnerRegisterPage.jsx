@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link  , useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../../hooks/useAuth';
 
 
 const FoodPartnerRegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate  = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,8 +24,9 @@ const FoodPartnerRegisterPage = () => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/food-partner/register`, data);
       if (response.status === 201) {
-        alert('Registration successful! Please log in.');
-        navigate('/food-partner/login');
+        login(response.data.partner || response.data.user || data);
+        alert('Registration successful!');
+        navigate('/');
       }
     }
     catch (error) {

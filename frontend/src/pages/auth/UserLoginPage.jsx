@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../../hooks/useAuth';
 
 const UserLoginPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -22,8 +24,9 @@ const UserLoginPage = () => {
       );
 
       console.log('Login successful:', response.data);
+      login(response.data.user);
       alert('Login successful!');
-      navigate('/'); // ✅ Redirect on success
+      navigate('/');
     } catch (error) {
       console.error('Login failed:', error);
       alert('Invalid email or password');

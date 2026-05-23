@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../../hooks/useAuth';
 
 
 const FoodPartnerLoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -21,6 +23,7 @@ const FoodPartnerLoginPage = () => {
         withCredentials: true,
       });
       console.log('Login successful:', response.data);
+      login(response.data.partner || response.data.user);
       alert('Login successful!');
       navigate('/create-food'); // ✅ Redirect on success
     } catch (error) {

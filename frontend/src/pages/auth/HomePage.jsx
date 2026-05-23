@@ -85,11 +85,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../../styles/reels.css'
 import ReelFeed from '../../components/ReelFeed'
+import UserProfile from '../../components/UserProfile'
+import { useAuth } from '../../hooks/useAuth'
 
 const Home = () => {
     const [videos, setVideos] = useState([])
     const [showVideos, setShowVideos] = useState(false)
     const navigate = useNavigate()
+    const { user } = useAuth()
 
     // fetch available videos (public endpoint)
     useEffect(() => {
@@ -132,10 +135,19 @@ const Home = () => {
                 <header className="bg-black/60 backdrop-blur sticky top-0 z-50">
                     <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
                         <Link to="/" className="text-2xl font-extrabold text-red-500 tracking-tight">zomato</Link>
-                        <nav className="space-x-4 text-gray-200 text-sm">
-                            <Link to="/user/login" className="hover:text-white">Login</Link>
-                            <Link to="/user/register" className="hover:text-white">Sign Up</Link>
-                            <Link to="/food-partner/login" className="hover:text-white">Partner</Link>
+                        <nav className="flex items-center space-x-4 text-gray-200 text-sm">
+                            {user ? (
+                                <>
+                                    <Link to="/food-partner/login" className="hover:text-white">Partner</Link>
+                                    <UserProfile />
+                                </>
+                            ) : (
+                                <>
+                                    <Link to="/user/login" className="hover:text-white">Login</Link>
+                                    <Link to="/user/register" className="hover:text-white">Sign Up</Link>
+                                    <Link to="/food-partner/login" className="hover:text-white">Partner</Link>
+                                </>
+                            )}
                         </nav>
                     </div>
                 </header>
