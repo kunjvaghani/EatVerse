@@ -2,9 +2,10 @@
 
 /* Page container ensures full viewport and background */
 .reels-page {
-  height: 100dvh;
+  height: 100%;
+  width: 100%;
   background: var(--color-bg);
-  overflow: hidden; /* parent hides overscroll glow on iOS */
+  overflow: hidden;
 }
 
 /* Vertical feed with snap scrolling */
@@ -65,13 +66,13 @@
   position: relative;
   width: 100%;
   padding: var(--space-6);
-  padding-bottom: calc(env(safe-area-inset-bottom, 0) + 72px); /* make space for bottom nav */
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px); /* space for bottom nav */
+  padding-right: 4.5rem; /* avoid overlap with right-side actions */
   display: flex;
   flex-direction: column;
-  padding-right: 4.5rem;
   gap: var(--space-4);
-  pointer-events: auto; /* enable button click */
-  z-index: 3; /* content should be above gradient */
+  pointer-events: auto;
+  z-index: 3;
 }
 
 /* Truncated to two lines */

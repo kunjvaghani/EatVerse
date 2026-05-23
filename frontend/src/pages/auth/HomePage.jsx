@@ -64,18 +64,23 @@ const Home = () => {
         } catch (err) { /* ignore */ }
     }
 
-    // Show ReelFeed when user clicked "See all videos"
+    // Show ReelFeed when user clicked "See all videos" — fullscreen, no navbar
     if (showVideos) {
         return (
-            <div className="min-h-screen bg-gray-950">
-                <EnhancedNavbar user={user} />
+            <div className="fixed inset-0 bg-black z-40">
+                {/* Floating back button top-left — small and unobtrusive */}
+                <button
+                    onClick={() => setShowVideos(false)}
+                    className="absolute top-4 left-4 z-50 flex items-center gap-2 px-3 py-1.5 bg-black/50 backdrop-blur-sm border border-white/20 text-white text-sm font-semibold rounded-full hover:bg-black/70 transition"
+                >
+                    ← Back
+                </button>
                 <ReelFeed
                     items={videos}
                     onLike={likeVideo}
                     onSave={saveVideo}
                     emptyMessage="No videos available."
                 />
-                <PremiumFooter />
             </div>
         )
     }
