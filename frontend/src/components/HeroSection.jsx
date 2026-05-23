@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const HeroSection = ({ user, navigate }) => {
+const HeroSection = ({ user, navigate, onShowVideos }) => {
   return (
     <div className="relative min-h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden">
       {/* Animated background elements */}
@@ -39,7 +39,7 @@ const HeroSection = ({ user, navigate }) => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               {user ? (
                 <button
-                  onClick={() => navigate('/feed')}
+                  onClick={onShowVideos || (() => navigate('/feed'))}
                   className="px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-red-500/50 transition-all duration-300 transform hover:scale-105 text-center flex items-center justify-center gap-2"
                 >
                   <span>🎬</span> Explore Videos
