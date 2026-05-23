@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 
 const FoodPartnerLoginPage = () => {
@@ -24,11 +25,12 @@ const FoodPartnerLoginPage = () => {
       });
       console.log('Login successful:', response.data);
       login(response.data.partner || response.data.user);
-      alert('Login successful!');
-      navigate('/create-food'); // ✅ Redirect on success
+      toast.success('Partner login successful! Welcome to your dashboard 🎉');
+      navigate('/create-food');
     } catch (error) {
       console.error('Error during login:', error);
-      alert('Login failed. Please check your credentials and try again.');
+      const msg = error?.response?.data?.message || 'Login failed. Please check your credentials.';
+      toast.error(msg);
     }
   };
 

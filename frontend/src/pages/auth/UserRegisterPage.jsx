@@ -91,6 +91,7 @@ import React, { useState } from 'react';
 import { Link  , useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const UserRegisterPage = () => {
   const navigate = useNavigate();
@@ -118,13 +119,14 @@ const UserRegisterPage = () => {
           
       console.log('User registered:', response.data);
       login(response.data.user);
-      alert('User registered successfully!');
+      toast.success('Account created successfully! Welcome aboard 🎉');
       navigate('/');
 
 
     } catch (error) {
       console.error('Error registering user:', error);  
-      alert('Something went wrong. Please try again.');
+      const msg = error?.response?.data?.message || 'Something went wrong. Please try again.';
+      toast.error(msg);
     }
   };
 

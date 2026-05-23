@@ -1,5 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import HomePage from  '../pages/auth/HomePage'
 import FoodPartnerLoginPage from '../pages/auth/FoodPartnerLoginPage'
@@ -30,6 +32,16 @@ const AppRoutes = () => {
 
             </Routes>
             {/* <Footer/> */}
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                pauseOnHover
+                draggable
+                theme="dark"
+            />
         </Router>
     )
 }

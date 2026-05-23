@@ -2,16 +2,16 @@ import React from 'react';
 
 const FeatureCard = ({ icon, title, description, gradient }) => {
   return (
-    <div className="group relative p-8 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300">
+    <div className="group relative p-8 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 border border-white/10">
       {/* Animated gradient background */}
       <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-      <div className="absolute inset-0 bg-white group-hover:bg-transparent transition-colors duration-300"></div>
+      <div className="absolute inset-0 bg-white/5 group-hover:bg-transparent transition-colors duration-300"></div>
 
       {/* Content */}
       <div className="relative z-10">
         <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{icon}</div>
-        <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-white transition-colors">{title}</h3>
-        <p className="text-gray-600 group-hover:text-gray-100 transition-colors leading-relaxed">{description}</p>
+        <h3 className="text-xl font-bold mb-3 text-white group-hover:text-white transition-colors">{title}</h3>
+        <p className="text-gray-400 group-hover:text-gray-100 transition-colors leading-relaxed">{description}</p>
       </div>
 
       {/* Animated border */}
@@ -61,13 +61,13 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section id="features" className="py-24 bg-gradient-to-b from-gray-900 to-black">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-white">
             Everything You Need to <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">Enjoy Food</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             From discovering new restaurants to ordering your favorite dishes, we've got you covered.
           </p>
         </div>

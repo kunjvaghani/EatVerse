@@ -14,7 +14,7 @@ const EnhancedNavbar = ({ user }) => {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-black/60 backdrop-blur-md'
+        isScrolled ? 'bg-gray-950/95 backdrop-blur-md shadow-lg shadow-black/50' : 'bg-black/60 backdrop-blur-md'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -23,13 +23,13 @@ const EnhancedNavbar = ({ user }) => {
             zomato
           </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#features" className={`font-medium transition ${isScrolled ? 'text-gray-700 hover:text-red-600' : 'text-gray-200 hover:text-white'}`}>
+            <a href="#features" className="font-medium text-gray-300 hover:text-white transition">
               Features
             </a>
-            <a href="#stats" className={`font-medium transition ${isScrolled ? 'text-gray-700 hover:text-red-600' : 'text-gray-200 hover:text-white'}`}>
+            <a href="#stats" className="font-medium text-gray-300 hover:text-white transition">
               About
             </a>
-            <a href="#testimonials" className={`font-medium transition ${isScrolled ? 'text-gray-700 hover:text-red-600' : 'text-gray-200 hover:text-white'}`}>
+            <a href="#testimonials" className="font-medium text-gray-300 hover:text-white transition">
               Testimonials
             </a>
           </nav>
@@ -40,7 +40,7 @@ const EnhancedNavbar = ({ user }) => {
             <UserProfile />
           ) : (
             <>
-              <Link to="/user/login" className={`px-4 py-2 font-medium rounded-lg transition ${isScrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}>
+              <Link to="/user/login" className="px-4 py-2 font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition">
                 Login
               </Link>
               <Link to="/user/register" className="px-6 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-lg hover:shadow-lg transition transform hover:scale-105">

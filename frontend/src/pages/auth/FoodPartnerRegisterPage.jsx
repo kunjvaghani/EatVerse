@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link  , useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 
 const FoodPartnerRegisterPage = () => {
@@ -25,13 +26,14 @@ const FoodPartnerRegisterPage = () => {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/food-partner/register`, data);
       if (response.status === 201) {
         login(response.data.partner || response.data.user || data);
-        alert('Registration successful!');
+        toast.success('Restaurant registered successfully! Welcome to Zomato 🎉');
         navigate('/');
       }
     }
     catch (error) {
       console.error('Error during registration:', error);
-      alert('Registration failed. Please try again.');
+      const msg = error?.response?.data?.message || 'Registration failed. Please try again.';
+      toast.error(msg);
     }
   };
 

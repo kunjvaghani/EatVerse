@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const UserLoginPage = () => {
   const navigate = useNavigate();
@@ -25,11 +26,12 @@ const UserLoginPage = () => {
 
       console.log('Login successful:', response.data);
       login(response.data.user);
-      alert('Login successful!');
+      toast.success('Welcome back! Login successful 🎉');
       navigate('/');
     } catch (error) {
       console.error('Login failed:', error);
-      alert('Invalid email or password');
+      const msg = error?.response?.data?.message || 'Invalid email or password';
+      toast.error(msg);
     }
   };
 
