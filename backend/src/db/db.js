@@ -18,6 +18,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const connectDB = async () => {
+  if (!process.env.MONGO_URI) {
+    throw new Error('MONGO_URI is not set. Add MONGO_URI to your backend environment variables.');
+  }
+
   try {
     // Use detailed connection options for serverless environments (like Vercel)
     await mongoose.connect(process.env.MONGO_URI, {

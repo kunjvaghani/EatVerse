@@ -42,4 +42,12 @@ app.use('/api', authRoutes);
 app.use('/api/food' , foodRoutes);
 app.use('/api/food-partner', foodPartnerRoutes);
 
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error('API error:', err);
+  res.status(err.status || 500).json({
+    message: err.message || 'Internal server error'
+  });
+});
+
 module.exports = app;

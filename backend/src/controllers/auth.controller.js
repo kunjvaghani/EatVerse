@@ -7,6 +7,11 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 dotenv.config();
 
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET is not set. Add JWT_SECRET to your backend environment variables.');
+}
+
 
 
 async function registerUser(req, res) {
@@ -35,7 +40,7 @@ async function registerUser(req, res) {
 
     const token = jwt.sign({
         id: user._id,
-    }, process.env.JWT_SECRET)
+    }, JWT_SECRET)
 
     res.cookie("token", token)
     // console.log(user)
@@ -66,7 +71,7 @@ async function loginUser(req, res) {
     }
     const token = jwt.sign({
         id: user._id,
-    }, process.env.JWT_SECRET)
+    }, JWT_SECRET)
     res.cookie("token", token)
     res.status(200).json({
         message: "User logged in successfully",
@@ -112,7 +117,7 @@ async function foodPartnerRegister(req , res) {
 
     const token = jwt.sign({
         id: foodpartner._id,
-    }, process.env.JWT_SECRET)
+    }, JWT_SECRET)
 
     res.cookie("token", token)
 
@@ -148,7 +153,7 @@ async function foodPartnerLogin(req , res) {
     }
     const token = jwt.sign({
         id: foodpartner._id,
-    }, process.env.JWT_SECRET)
+    }, JWT_SECRET)
     res.cookie("token", token)
     res.status(200).json({
         message: "Food-Partner logged in successfully",
