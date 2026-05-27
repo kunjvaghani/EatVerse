@@ -24,11 +24,13 @@ const connectDB = async () => {
 
   try {
     // Use detailed connection options for serverless environments (like Vercel)
+    // Increased timeouts to handle cold starts on serverless platforms
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      serverSelectionTimeoutMS: 10000, // stop trying after 10s instead of hanging
-      socketTimeoutMS: 45000, // close sockets after 45s idle
+      connectTimeoutMS: 30000, // connection phase timeout (30s for cold starts)
+      serverSelectionTimeoutMS: 30000, // server selection timeout (30s instead of 10s)
+      socketTimeoutMS: 90000, // close sockets after 90s idle (was 45s)
     });
 
     console.log("✅ MongoDB connected successfully");
