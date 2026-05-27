@@ -24,8 +24,14 @@ const Saved = () => {
 
     const removeSaved = async (item) => {
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/food/save`, { foodId: item._id }, { withCredentials: true })
-            setVideos((prev) => prev.map((v) => v._id === item._id ? { ...v, savesCount: Math.max(0, (v.savesCount ?? 1) - 1) } : v))
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/food/save`, { foodId: item._id }, { withCredentials: true })
+            // If server returned 200, it was unsaved — remove from list
+            if (response.status === 200) {
+                setVideos((prev) => prev.filter((v) => v._id !== item._id))
+            } else {
+                // toggled on (201) — update count defensively
+                setVideos((prev) => prev.map((v) => v._id === item._id ? { ...v, savesCount: (v.savesCount || 0) + 1 } : v))
+            }
         } catch {
             // noop
         }
@@ -36,6 +42,7 @@ const Saved = () => {
             items={videos}
             onSave={removeSaved}
             emptyMessage="No saved videos yet."
+            title="Saved Videos"
         />
     )
 }

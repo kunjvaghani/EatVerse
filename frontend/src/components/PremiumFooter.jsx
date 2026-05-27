@@ -10,10 +10,10 @@ const PremiumFooter = () => {
           {/* Brand */}
           <div>
             <div className="text-3xl font-black mb-4 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-              zomato
+              Eatverse
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Discover the best food & drinks in your city. Order online, explore restaurants, and grow your business with Zomato.
+              Discover the best food & drinks in your city. Order online, explore restaurants, and grow your business with Eatverse.
             </p>
           </div>
 
@@ -70,10 +70,12 @@ const PremiumFooter = () => {
 
           <div className="flex gap-4">
             <button className="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition text-sm font-medium flex items-center gap-2">
-              <span>📱</span> App Store
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-300"><path d="M12 2v20M2 12h20"/></svg>
+              App Store
             </button>
             <button className="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition text-sm font-medium flex items-center gap-2">
-              <span>🎮</span> Play Store
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-300"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>
+              Play Store
             </button>
           </div>
         </div>
@@ -85,7 +87,7 @@ const PremiumFooter = () => {
             <a href="#" className="hover:text-gray-300 transition">Terms & Conditions</a>
             <a href="#" className="hover:text-gray-300 transition">Cookie Policy</a>
           </div>
-          <p>&copy; 2024 Zomato Clone. All rights reserved.</p>
+          <p>&copy; 2024 Eatverse. All rights reserved.</p>
         </div>
       </div>
     </footer>

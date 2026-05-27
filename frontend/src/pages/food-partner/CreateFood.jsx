@@ -93,7 +93,7 @@ const CreateFood = () => {
             {/* Consistent Navbar */}
             <header className="bg-black/60 backdrop-blur">
                 <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-                    <Link to="/" className="text-2xl font-extrabold text-red-500 tracking-tight">zomato</Link>
+                    <Link to="/" className="text-2xl font-extrabold text-red-500 tracking-tight">Eatverse</Link>
                     <nav className="space-x-4 text-gray-200 text-sm">
                         <Link to="/" className="hover:text-white transition-colors">Back to Feed</Link>
                     </nav>

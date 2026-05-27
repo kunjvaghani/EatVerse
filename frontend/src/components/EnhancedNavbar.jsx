@@ -22,7 +22,7 @@ const EnhancedNavbar = ({ user }) => {
 
         {/* Logo */}
         <Link to="/" className="text-2xl font-black tracking-tighter bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent flex-shrink-0">
-          zomato
+          Eatverse
         </Link>
 
         {/* Desktop nav links — hidden on mobile */}

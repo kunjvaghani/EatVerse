@@ -32,7 +32,7 @@ const TestimonialsSection = () => {
     {
       name: 'Sarah Johnson',
       role: 'Food Enthusiast',
-      text: 'Zomato has completely changed how I discover new restaurants. The video reels are addictive!',
+      text: 'Eatverse has completely changed how I discover new restaurants. The video reels are addictive!',
       avatar: 'SJ',
       rating: 5
     },

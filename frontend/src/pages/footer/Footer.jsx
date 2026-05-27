@@ -42,7 +42,7 @@ const Footer = () => {
   // Footer Sections
   const sections = [
     {
-      title: "About Zomato",
+      title: "About Eatverse",
       links: [
         { label: "Who We Are", href: "#" },
         { label: "Blog", href: "#" },
@@ -52,12 +52,12 @@ const Footer = () => {
       ],
     },
     {
-      title: "Zomaverse",
+      title: "Eatverse Network",
       links: [
-        { label: "Zomato", href: "#" },
+        { label: "Eatverse", href: "#" },
         { label: "Blinkit", href: "#" },
         { label: "Feeding India", href: "#" },
-        { label: "Zomaland", href: "#" },
+        { label: "Eatverse Land", href: "#" },
       ],
     },
     {
@@ -180,7 +180,7 @@ const Footer = () => {
             By continuing past this page, you agree to our Terms of Service,
             Cookie Policy, Privacy Policy and Content Policies. All trademarks
             are properties of their respective owners. 2008-
-            {new Date().getFullYear()} © Zomato™ Ltd. All rights reserved.
+            {new Date().getFullYear()} © Eatverse™ Ltd. All rights reserved.
           </p>
         </div>
       </div>

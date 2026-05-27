@@ -26,7 +26,7 @@ const FoodPartnerRegisterPage = () => {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/food-partner/register`, data);
       if (response.status === 201) {
         login(response.data.partner || response.data.user || data);
-        toast.success('Restaurant registered successfully! Welcome to Zomato 🎉');
+        toast.success('Restaurant registered successfully! Welcome to Eatverse');
         navigate('/');
       }
     }
@@ -55,12 +55,12 @@ const FoodPartnerRegisterPage = () => {
             className="text-4xl font-bold tracking-tighter"
             style={{ fontFamily: "'Merriweather', serif" }}
           >
-            zomato <span className="font-light text-red-500">for Business</span>
+            Eatverse <span className="font-light text-red-500">for Business</span>
           </Link>
         </div>
         <div className="relative z-10">
           <h1 className="text-5xl font-bold leading-tight">
-            Grow your business with Zomato.
+            Grow your business with Eatverse.
           </h1>
           <ul className="mt-6 space-y-4 text-lg text-gray-200">
             <li className="flex items-center">

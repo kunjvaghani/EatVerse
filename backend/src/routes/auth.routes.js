@@ -9,6 +9,7 @@ const bcrypt = require('bcrypt');
 router.post('/user/register' , authController.registerUser);
 router.post('/user/login' , authController.loginUser);
 router.post('/user/logout' , authController.logoutUser);
+router.get('/user/profile', authMiddleware.authusermiddleware, authController.getUserProfile);
 
 router.post('/food-partner/register' , authController.foodPartnerRegister);
 router.post('/food-partner/login' , authController.foodPartnerLogin);

@@ -2,7 +2,7 @@
 
 /* Page container ensures full viewport and background */
 .reels-page {
-  height: 100%;
+  height: 100dvh;
   width: 100%;
   background: var(--color-bg);
   overflow: hidden;
@@ -10,13 +10,40 @@
 
 /* Vertical feed with snap scrolling */
 .reels-feed {
-  height: 100%;
+  height: 100dvh;
   width: 100%;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+}
+
+/* Top header shown when viewing a feed (back button/title) */
+.reel-header {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 60;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.reel-back {
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.reel-title {
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,.45);
 }
 
 /* Each reel takes full viewport */

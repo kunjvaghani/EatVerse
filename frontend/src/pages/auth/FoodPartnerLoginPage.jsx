@@ -42,7 +42,7 @@ const FoodPartnerLoginPage = () => {
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="relative z-10">
           <Link to="/" className="text-4xl font-bold tracking-tighter" style={{ fontFamily: "'Merriweather', serif" }}>
-            zomato <span className="font-light text-red-500">for Business</span>
+            Eatverse <span className="font-light text-red-500">for Business</span>
           </Link>
         </div>
         <div className="relative z-10">

@@ -53,7 +53,7 @@ const UserLoginPage = () => {
             className="text-4xl font-bold tracking-tighter"
             style={{ fontFamily: "'Merriweather', serif" }}
           >
-            zomato
+            Eatverse
           </Link>
         </div>
         <div className="relative z-10">

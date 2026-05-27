@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Reusable feed for vertical reels
 // Props:
@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom'
 // - onLike: (item) => void | Promise<void>
 // - onSave: (item) => void | Promise<void>
 // - emptyMessage: string
-const ReelFeed = ({ items = [], onLike, onSave, emptyMessage = 'No videos yet.' }) => {
+const ReelFeed = ({ items = [], onLike, onSave, emptyMessage = 'No videos yet.', title = null }) => {
   const videoRefs = useRef(new Map())
+  const navigate = useNavigate()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,6 +38,10 @@ const ReelFeed = ({ items = [], onLike, onSave, emptyMessage = 'No videos yet.' 
   // console.log("Reel item:", item);
   return (
     <div className="reels-page">
+      <div className="reel-header">
+        <button className="reel-back" onClick={() => navigate(-1)} aria-label="Back">Back</button>
+        {title && <div className="reel-title">{title}</div>}
+      </div>
       <div className="reels-feed" role="list">
         {items.length === 0 && (
           <div className="empty-state">

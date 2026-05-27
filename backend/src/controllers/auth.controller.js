@@ -42,7 +42,14 @@ async function registerUser(req, res) {
         id: user._id,
     }, JWT_SECRET)
 
-    res.cookie("token", token)
+    const cookieOptions = {
+        httpOnly: true,
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+    };
+
+    res.cookie("token", token, cookieOptions)
     // console.log(user)
     res.status(201).json({
         message: "User registered successfully",
@@ -72,7 +79,15 @@ async function loginUser(req, res) {
     const token = jwt.sign({
         id: user._id,
     }, JWT_SECRET)
-    res.cookie("token", token)
+
+    const cookieOptions = {
+        httpOnly: true,
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+    };
+
+    res.cookie("token", token, cookieOptions)
     res.status(200).json({
         message: "User logged in successfully",
         user: {
@@ -119,7 +134,14 @@ async function foodPartnerRegister(req , res) {
         id: foodpartner._id,
     }, JWT_SECRET)
 
-    res.cookie("token", token)
+    const cookieOptions = {
+        httpOnly: true,
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+    };
+
+    res.cookie("token", token, cookieOptions)
 
     res.status(201).json({
         message: "Food-Partner registered successfully",
@@ -154,7 +176,15 @@ async function foodPartnerLogin(req , res) {
     const token = jwt.sign({
         id: foodpartner._id,
     }, JWT_SECRET)
-    res.cookie("token", token)
+
+    const cookieOptions = {
+        httpOnly: true,
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+    };
+
+    res.cookie("token", token, cookieOptions)
     res.status(200).json({
         message: "Food-Partner logged in successfully",
         user: {
@@ -204,6 +234,20 @@ async function getfoodpartnerfollowing(req , res) {
 
 
 }
+async function getUserProfile(req, res) {
+    const user = req.user;
+    if (!user) {
+        return res.status(401).json({ message: 'Not authenticated' });
+    }
+
+    res.status(200).json({
+        user: {
+            _id: user._id,
+            fullName: user.fullName,
+            email: user.email
+        }
+    });
+}
 module.exports = {
     registerUser,
     loginUser,
@@ -213,4 +257,5 @@ module.exports = {
     foodPartnerRegister , 
     getallfoodpartner , 
     getfoodpartnerfollowing
+    , getUserProfile
 };
