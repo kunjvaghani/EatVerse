@@ -9,7 +9,7 @@ dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET;
 if (!JWT_SECRET) {
-  throw new Error('JWT_SECRET is not set. Add JWT_SECRET to your backend environment variables.');
+    console.warn('Warning: JWT_SECRET is not set. Token operations will fail until configured.');
 }
 
 
@@ -38,9 +38,17 @@ async function registerUser(req, res) {
         password: hashpass
     })
 
-    const token = jwt.sign({
-        id: user._id,
-    }, JWT_SECRET)
+    if (!JWT_SECRET) {
+        return res.status(500).json({ message: 'Server configuration error: JWT_SECRET not set' });
+    }
+
+    let token;
+    try {
+        token = jwt.sign({ id: user._id }, JWT_SECRET);
+    } catch (err) {
+        console.error('JWT sign error:', err);
+        return res.status(500).json({ message: 'Failed to create auth token' });
+    }
 
     const cookieOptions = {
         httpOnly: true,
@@ -49,7 +57,7 @@ async function registerUser(req, res) {
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     };
 
-    res.cookie("token", token, cookieOptions)
+    res.cookie('token', token, cookieOptions);
     // console.log(user)
     res.status(201).json({
         message: "User registered successfully",
@@ -76,9 +84,17 @@ async function loginUser(req, res) {
             message: "Wrong password"
         })
     }
-    const token = jwt.sign({
-        id: user._id,
-    }, JWT_SECRET)
+    if (!JWT_SECRET) {
+        return res.status(500).json({ message: 'Server configuration error: JWT_SECRET not set' });
+    }
+
+    let token;
+    try {
+        token = jwt.sign({ id: user._id }, JWT_SECRET);
+    } catch (err) {
+        console.error('JWT sign error:', err);
+        return res.status(500).json({ message: 'Failed to create auth token' });
+    }
 
     const cookieOptions = {
         httpOnly: true,
@@ -87,7 +103,7 @@ async function loginUser(req, res) {
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     };
 
-    res.cookie("token", token, cookieOptions)
+    res.cookie('token', token, cookieOptions);
     res.status(200).json({
         message: "User logged in successfully",
         user: {
@@ -130,9 +146,17 @@ async function foodPartnerRegister(req , res) {
         contactname
     })
 
-    const token = jwt.sign({
-        id: foodpartner._id,
-    }, JWT_SECRET)
+    if (!JWT_SECRET) {
+        return res.status(500).json({ message: 'Server configuration error: JWT_SECRET not set' });
+    }
+
+    let token;
+    try {
+        token = jwt.sign({ id: foodpartner._id }, JWT_SECRET);
+    } catch (err) {
+        console.error('JWT sign error:', err);
+        return res.status(500).json({ message: 'Failed to create auth token' });
+    }
 
     const cookieOptions = {
         httpOnly: true,
@@ -141,7 +165,7 @@ async function foodPartnerRegister(req , res) {
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     };
 
-    res.cookie("token", token, cookieOptions)
+    res.cookie('token', token, cookieOptions);
 
     res.status(201).json({
         message: "Food-Partner registered successfully",
@@ -173,9 +197,17 @@ async function foodPartnerLogin(req , res) {
             message: "Wrong password"
         })
     }
-    const token = jwt.sign({
-        id: foodpartner._id,
-    }, JWT_SECRET)
+    if (!JWT_SECRET) {
+        return res.status(500).json({ message: 'Server configuration error: JWT_SECRET not set' });
+    }
+
+    let token;
+    try {
+        token = jwt.sign({ id: foodpartner._id }, JWT_SECRET);
+    } catch (err) {
+        console.error('JWT sign error:', err);
+        return res.status(500).json({ message: 'Failed to create auth token' });
+    }
 
     const cookieOptions = {
         httpOnly: true,
@@ -184,7 +216,7 @@ async function foodPartnerLogin(req , res) {
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     };
 
-    res.cookie("token", token, cookieOptions)
+    res.cookie('token', token, cookieOptions);
     res.status(200).json({
         message: "Food-Partner logged in successfully",
         user: {
