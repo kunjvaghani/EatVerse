@@ -29,7 +29,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       connectTimeoutMS: 30000, // connection phase timeout (30s for cold starts)
-      serverSelectionTimeoutMS: 30000, // server selection timeout (30s instead of 10s)
+      serverSelectionTimeoutMS: 40000, // server selection timeout (40s instead of 10s)
       socketTimeoutMS: 90000, // close sockets after 90s idle (was 45s)
     });
 

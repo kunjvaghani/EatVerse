@@ -14,7 +14,8 @@ const app = express();
 
 const allowedOrigins = [
   'http://localhost:5173',                   // Local dev frontend
-  'https://zomato-clone-87w6.vercel.app'    // Deployed frontend URL (remove trailing slash!)
+  'https://zomato-clone-87w6.vercel.app',
+  'https://eatverse.vercel.app'    // Deployed frontend URL (remove trailing slash!)
 ];
 
 // Use function form of origin to properly allow multiple domains
